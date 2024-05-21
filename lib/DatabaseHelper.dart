@@ -41,7 +41,7 @@ class DatabaseHelper {
     // Método assíncrono para inserir uma tarefa no banco de dados
     final db = await database; // Obtém o banco de dados
     return await db.insert(
-        'tarefas', tarefa.toMap()); // Insere a tarefa na tabela 'tasks'
+        'tarefa', tarefa.toMap()); // Insere a tarefa na tabela 'tasks'
   }
 
   Future<List<Tarefa>> fetchTasks() async {
@@ -58,16 +58,16 @@ class DatabaseHelper {
   Future<int> updateTask(Tarefa tarefa) async {
     // Método assíncrono para atualizar uma tarefa no banco de dados
     final db = await database; // Obtém o banco de dados
-    return await db.update(
-        'tarefas', tarefa.toMap(), // Atualiza a tarefa na tabela 'tasks'
-        where: 'id = ?',
-        whereArgs: [tarefa.id]); // Condição para atualização
+    return await db
+        .update('tarefa', tarefa.toMap(), // Atualiza a tarefa na tabela 'tasks'
+            where: 'id = ?',
+            whereArgs: [tarefa.id]); // Condição para atualização
   }
 
   Future<int> deleteTask(int id) async {
     // Método assíncrono para deletar uma tarefa do banco de dados
     final db = await database; // Obtém o banco de dados
-    return await db.delete('tarefas',
+    return await db.delete('tarefa',
         where: 'id = ?', whereArgs: [id]); // Deleta a tarefa da tabela 'tasks'
   }
 }
